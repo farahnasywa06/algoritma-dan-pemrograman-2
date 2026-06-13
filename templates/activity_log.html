@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+Activity Log
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold">
+            Activity Log
+        </h2>
+
+        <p class="text-muted">
+            Riwayat aktivitas sistem
+        </p>
+
+    </div>
+
+</div>
+
+{% if logs %}
+
+    {% for log in logs %}
+
+    <div class="activity-card">
+
+        <div class="activity-icon
+            {% if log.action == 'LOGIN' %}action-login
+            {% elif log.action == 'ADD' %}action-add
+            {% elif log.action == 'UPDATE' %}action-update
+            {% elif log.action == 'DELETE' %}action-delete
+            {% elif log.action == 'EXPORT' %}action-export
+            {% elif log.action == 'IMPORT' %}action-import
+            {% elif log.action == 'EMAIL' %}action-email
+            {% endif %}
+        ">
+
+            {% if log.action == 'LOGIN' %}
+                🔑
+            {% elif log.action == 'ADD' %}
+                ➕
+            {% elif log.action == 'UPDATE' %}
+                ✏️
+            {% elif log.action == 'DELETE' %}
+                🗑️
+            {% elif log.action == 'EXPORT' %}
+                📤
+            {% elif log.action == 'IMPORT' %}
+                📥
+            {% elif log.action == 'EMAIL' %}
+                📧
+            {% else %}
+                📌
+            {% endif %}
+
+        </div>
+
+        <div class="activity-content">
+
+            <h5>
+
+                {{ log.action }}
+
+            </h5>
+
+            <small>
+
+                {{ log.timestamp }}
+
+            </small>
+
+            <p>
+
+                {{ log.description }}
+
+            </p>
+
+            <span class="activity-user">
+
+                👤 {{ log.username }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<div class="card p-4">
+
+    <h5 class="mb-2">
+        Belum Ada Aktivitas
+    </h5>
+
+    <p class="text-muted mb-0">
+        Aktivitas sistem akan muncul di sini.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

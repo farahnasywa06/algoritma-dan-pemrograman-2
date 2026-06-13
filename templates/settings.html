@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+    Settings
+
+</h2>
+
+<div class="card p-4">
+
+    <h4 class="mb-3">
+
+        Informasi Sistem
+
+    </h4>
+
+    <table class="table">
+
+        <tr>
+
+            <td>Nama Sistem</td>
+
+            <td>Student Management System</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Versi</td>
+
+            <td>1.0</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Framework</td>
+
+            <td>Flask</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Bahasa</td>
+
+            <td>Python</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Database</td>
+
+            <td>JSON File Storage</td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+<br>
+
+<div class="card p-4">
+
+    <h4 class="mb-3">
+
+        Statistik Sistem
+
+    </h4>
+
+    <ul>
+
+        <li>
+
+            Total Mahasiswa :
+            {{ total_students }}
+
+        </li>
+
+        <li>
+
+            Total Aktivitas :
+            {{ total_logs }}
+
+        </li>
+
+    </ul>
+
+</div>
+
+{% endblock %}

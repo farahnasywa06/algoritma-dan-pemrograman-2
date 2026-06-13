@@ -1,0 +1,188 @@
+[
+    {
+        "timestamp": "2026-06-13 11:15:37",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-13 11:16:30",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-13 11:20:06",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-13 11:39:07",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 11:39:53",
+        "username": "admin",
+        "action": "ADD",
+        "description": "Tambah mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 11:40:36",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-13 11:40:48",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-13 11:40:52",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-13 12:09:10",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 12:09:15",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450257"
+    },
+    {
+        "timestamp": "2026-06-13 12:09:19",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 12:09:22",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 12:09:25",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450257"
+    },
+    {
+        "timestamp": "2026-06-13 12:17:34",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 12:17:36",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450257"
+    },
+    {
+        "timestamp": "2026-06-13 12:17:38",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450333"
+    },
+    {
+        "timestamp": "2026-06-13 12:17:48",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 12:17:50",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450257"
+    },
+    {
+        "timestamp": "2026-06-13 12:17:51",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450333"
+    },
+    {
+        "timestamp": "2026-06-13 13:39:08",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim OTP ke farah@gmail.com"
+    },
+    {
+        "timestamp": "2026-06-13 13:42:59",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim profil mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 13:44:05",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450333"
+    },
+    {
+        "timestamp": "2026-06-13 13:44:11",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim profil mahasiswa 241011450333"
+    },
+    {
+        "timestamp": "2026-06-13 13:44:57",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-13 13:46:41",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-13 14:17:54",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 14:17:57",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450257"
+    },
+    {
+        "timestamp": "2026-06-13 14:17:58",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450333"
+    },
+    {
+        "timestamp": "2026-06-13 14:43:42",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-13 14:45:07",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-13 14:45:26",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    }
+]

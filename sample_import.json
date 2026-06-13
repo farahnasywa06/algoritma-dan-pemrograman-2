@@ -1,0 +1,20 @@
+[
+  {
+    "nim": "24010001",
+    "full_name": "Luna Maharani",
+    "major": "Informatika",
+    "year": "2024",
+    "gpa": "3.77",
+    "email": "luna@example.com",
+    "phone": "+6281111111111"
+  },
+  {
+    "nim": "24010002",
+    "full_name": "Salma Putri",
+    "major": "Sistem Informasi",
+    "year": "2023",
+    "gpa": "3.66",
+    "email": "salma@example.com",
+    "phone": "+6281222222222"
+  }
+]

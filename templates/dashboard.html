@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold">
+
+            Dashboard
+
+        </h2>
+
+        <p class="text-muted">
+
+            Student Management System
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- KPI -->
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <h3>👨‍🎓 Total Mahasiswa</h3>
+
+        <div class="value">
+
+            {{ total_students }}
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>🎓 Total Prodi</h3>
+
+        <div class="value">
+
+            {{ total_majors }}
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>⭐ Rata-rata IPK</h3>
+
+        <div class="value">
+
+            {{ average_gpa }}
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>📧 Email Aktif</h3>
+
+        <div class="value">
+
+            {{ total_students }}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CHART -->
+
+<div class="row">
+
+    <div class="col-lg-8 mb-4">
+
+        <div class="card p-4">
+
+            <h4>
+
+                Mahasiswa per Angkatan
+
+            </h4>
+
+            <canvas id="yearChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 mb-4">
+
+        <div class="card p-4">
+
+            <h4>
+
+                Distribusi Program Studi
+
+            </h4>
+
+            <canvas id="majorChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script id="year-data" type="application/json">{{ year_data|default({})|tojson }}</script>
+<script id="major-data" type="application/json">{{ major_data|default({})|tojson }}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const yearData = JSON.parse(document.getElementById("year-data").textContent);
+
+const majorData = JSON.parse(document.getElementById("major-data").textContent);
+
+new Chart(
+
+    document.getElementById(
+        "yearChart"
+    ),
+
+    {
+
+        type: "bar",
+
+        data: {
+
+            labels:
+            Object.keys(yearData),
+
+            datasets: [
+
+                {
+
+                    label:
+                    "Jumlah Mahasiswa",
+
+                    data:
+                    Object.values(yearData)
+
+                }
+
+            ]
+
+        }
+
+    }
+
+);
+
+new Chart(
+
+    document.getElementById(
+        "majorChart"
+    ),
+
+    {
+
+        type: "doughnut",
+
+        data: {
+
+            labels:
+            Object.keys(majorData),
+
+            datasets: [
+
+                {
+
+                    data:
+                    Object.values(majorData)
+
+                }
+
+            ]
+
+        }
+
+    }
+
+);
+
+</script>
+<br>
+
+<div class="card p-4">
+
+    <h4 class="mb-3">
+
+        Aktivitas Terbaru
+
+    </h4>
+
+    {% if recent_logs %}
+
+        <div class="list-group">
+
+            {% for log in recent_logs %}
+
+            <div
+            class="list-group-item">
+
+                <strong>
+
+                    {{ log.action }}
+
+                </strong>
+
+                -
+
+                {{ log.description }}
+
+                <br>
+
+                <small class="text-muted">
+
+                    {{ log.timestamp }}
+
+                </small>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        Tidak ada aktivitas
+
+    {% endif %}
+
+</div>
+{% endblock %}
