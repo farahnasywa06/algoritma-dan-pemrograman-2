@@ -7,23 +7,5 @@
         "gpa": 4.0,
         "email": "aditya@gmail.com",
         "phone": "081234562345"
-    },
-    {
-        "nim": "241011450257",
-        "full_name": "akbar",
-        "major": "teknik informatika",
-        "year": 2024,
-        "gpa": 4.0,
-        "email": "gusakbarudinuyeah@gmail.com",
-        "phone": "08123456788"
-    },
-    {
-        "nim": "241011450253",
-        "full_name": "Farah Nasywa",
-        "major": "Teknik Informatik",
-        "year": 2025,
-        "gpa": 4.0,
-        "email": "farah@gmail.com",
-        "phone": "0812345678"
     }
 ]

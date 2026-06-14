@@ -1,110 +1,94 @@
-{% extends "base.html" %}
-
-{% block title %}
-Activity Log
-{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %} Activity Log {% endblock %} {% block content %}
 
 <div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold">Activity Log</h2>
 
-    <div>
-
-        <h2 class="fw-bold">
-            Activity Log
-        </h2>
-
-        <p class="text-muted">
-            Riwayat aktivitas sistem
-        </p>
-
-    </div>
-
+    <p class="text-muted mb-0">Riwayat aktivitas sistem</p>
+  </div>
 </div>
-
-{% if logs %}
-
-    {% for log in logs %}
-
-    <div class="activity-card">
-
-        <div class="activity-icon
-            {% if log.action == 'LOGIN' %}action-login
-            {% elif log.action == 'ADD' %}action-add
-            {% elif log.action == 'UPDATE' %}action-update
-            {% elif log.action == 'DELETE' %}action-delete
-            {% elif log.action == 'EXPORT' %}action-export
-            {% elif log.action == 'IMPORT' %}action-import
-            {% elif log.action == 'EMAIL' %}action-email
-            {% endif %}
-        ">
-
-            {% if log.action == 'LOGIN' %}
-                🔑
-            {% elif log.action == 'ADD' %}
-                ➕
-            {% elif log.action == 'UPDATE' %}
-                ✏️
-            {% elif log.action == 'DELETE' %}
-                🗑️
-            {% elif log.action == 'EXPORT' %}
-                📤
-            {% elif log.action == 'IMPORT' %}
-                📥
-            {% elif log.action == 'EMAIL' %}
-                📧
-            {% else %}
-                📌
-            {% endif %}
-
-        </div>
-
-        <div class="activity-content">
-
-            <h5>
-
-                {{ log.action }}
-
-            </h5>
-
-            <small>
-
-                {{ log.timestamp }}
-
-            </small>
-
-            <p>
-
-                {{ log.description }}
-
-            </p>
-
-            <span class="activity-user">
-
-                👤 {{ log.username }}
-
-            </span>
-
-        </div>
-
-    </div>
-
-    {% endfor %}
-
-{% else %}
 
 <div class="card p-4">
+  <div class="table-responsive">
+    <table id="activityTable" class="table table-striped table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Action</th>
+          <th>Deskripsi</th>
+          <th>User</th>
+          <th>Waktu</th>
+        </tr>
+      </thead>
 
-    <h5 class="mb-2">
-        Belum Ada Aktivitas
-    </h5>
+      <tbody>
+        {% for log in logs %}
 
-    <p class="text-muted mb-0">
-        Aktivitas sistem akan muncul di sini.
-    </p>
+        <tr>
+          <td>
+            {% if log.action == 'LOGIN' %}
 
+            <span class="badge bg-success"> LOGIN </span>
+            {% elif log.action == 'LOGOUT' %}
+
+            <span class="badge bg-danger"> LOGOUT </span>
+
+            {% elif log.action == 'ADD' %}
+
+            <span class="badge bg-primary"> ADD </span>
+
+            {% elif log.action == 'UPDATE' %}
+
+            <span class="badge bg-warning text-dark"> UPDATE </span>
+
+            {% elif log.action == 'DELETE' %}
+
+            <span class="badge bg-danger"> DELETE </span>
+
+            {% elif log.action == 'EXPORT' %}
+
+            <span class="badge bg-info text-dark"> EXPORT </span>
+
+            {% elif log.action == 'IMPORT' %}
+
+            <span class="badge bg-secondary"> IMPORT </span>
+
+            {% elif log.action == 'EMAIL' %}
+
+            <span class="badge bg-dark"> EMAIL </span>
+
+            {% else %}
+
+            <span class="badge bg-light text-dark"> {{ log.action }} </span>
+
+            {% endif %}
+          </td>
+
+          <td>{{ log.description }}</td>
+
+          <td>{{ log.username }}</td>
+          <td>{{ log.timestamp }}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
-{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new DataTable("#activityTable", {
+      responsive: true,
+
+      pageLength: 10,
+
+      order: [[3, "desc"]],
+
+      language: {
+        lengthMenu: "_MENU_",
+      },
+    });
+  });
+</script>
 
 {% endblock %}

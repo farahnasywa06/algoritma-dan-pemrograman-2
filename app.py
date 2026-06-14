@@ -171,61 +171,103 @@ def dashboard():
 def students_page():
 
     if not login_required():
-
         return redirect(url_for("login_page"))
 
     students = load_students()
 
-    keyword = request.args.get("keyword", "")
+    # =========================
+    # PARAMETER FILTER
+    # =========================
+
+    keyword = request.args.get("keyword", "").strip()
 
     search_method = request.args.get("search", "linear")
 
     sort_method = request.args.get("sort", "merge")
 
-    execution_time = None
-    complexity = None
+    search_field = request.args.get("field", "full_name")
+
+    sort_field = request.args.get("sort_field", "nim")
+
+    order = request.args.get("order", "asc")
+
+    execution_time = 0
+    complexity = "-"
+
+    # =========================
+    # MULAI HITUNG WAKTU
+    # =========================
+
+    start = time.perf_counter()
+
+    # =========================
+    # SEARCHING
+    # =========================
 
     if keyword:
 
-        start = time.perf_counter()
+        if search_method == "linear":
 
-    if search_method == "linear":
+            students = LinearSearch.search(students, keyword, search_field)
 
-        students = LinearSearch.search(students, keyword)
+            complexity = "O(n)"
 
-        complexity = "O(n)"
+        elif search_method == "sequential":
+            students = SequentialSearch.search(students, keyword, search_field)
 
-    elif search_method == "sequential":
+            complexity = "O(n)"
 
-        students = SequentialSearch.search(students, keyword)
+        elif search_method == "binary":
 
-        complexity = "O(n)"
+            # Binary Search wajib data terurut
 
-    elif search_method == "binary":
+            students = MergeSort.sort(students, search_field)
 
-        students = BinarySearch.search(students, keyword)
+            students = BinarySearch.search(students, keyword, search_field)
 
-        complexity = "O(log n)"
+            complexity = "O(log n)"
 
-        execution_time = round((time.perf_counter() - start) * 1000, 4)
+    # =========================
+    # SORTING
+    # =========================
 
     if sort_method == "bubble":
 
-        students = BubbleSort.sort(students, "nim")
+        students = BubbleSort.sort(students, sort_field)
 
     elif sort_method == "selection":
 
-        students = SelectionSort.sort(students, "nim")
+        students = SelectionSort.sort(students, sort_field)
 
-    else:
+    elif sort_method == "merge":
 
-        students = MergeSort.sort(students, "nim")
+        students = MergeSort.sort(students, sort_field)
+
+    # =========================
+    # DESCENDING
+    # =========================
+
+    if order == "desc":
+
+        students.reverse()
+
+    # =========================
+    # EXECUTION TIME
+    # =========================
+
+    execution_time = round((time.perf_counter() - start) * 1000, 4)
 
     return render_template(
         "students.html",
         students=students,
         execution_time=execution_time,
         complexity=complexity,
+        keyword=keyword,
+        search_method=search_method,
+        sort_method=sort_method,
+        search_field=search_field,
+        sort_field=sort_field,
+        order=order,
     )
 
 
@@ -481,6 +523,26 @@ def delete_student(nim):
     return redirect(url_for("students_page"))
 
 
+@app.route("/students/delete-all")
+def delete_all_students():
+
+    if not login_required():
+
+        return redirect(url_for("login_page"))
+
+    save_students([])
+
+    write_log(
+        session["username"],
+        "DELETE",
+        f"Menghapus seluruh data mahasiswa",
+    )
+
+    flash("Semua data mahasiswa berhasil dihapus.")
+
+    return redirect(url_for("students_page"))
+
+
 # =========================
 
 # SEND EMAIL
@@ -505,35 +567,17 @@ def send_email_student(nim):
 
     if student is None:
 
-        flash(
-            "Mahasiswa tidak ditemukan"
-        )
+        flash("Mahasiswa tidak ditemukan")
 
-        return redirect(
-            url_for("students_page")
-        )
+        return redirect(url_for("students_page"))
 
     send_student_profile(student)
 
-    write_log(
+    write_log(session["username"], "EMAIL", f"Kirim profil mahasiswa {student.nim}")
 
-        session["username"],
+    flash(f"Data mahasiswa berhasil dikirim ke {student.email}")
 
-        "EMAIL",
-
-        f"Kirim profil mahasiswa {student.nim}"
-
-    )
-
-    flash(
-
-        f"Data mahasiswa berhasil dikirim ke {student.email}"
-
-    )
-
-    return redirect(
-        url_for("students_page")
-    )
+    return redirect(url_for("students_page"))
 
 
 # =========================

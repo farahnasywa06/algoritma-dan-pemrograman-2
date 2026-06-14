@@ -184,5 +184,77 @@
         "username": "admin",
         "action": "LOGIN",
         "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-14 21:58:06",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-14 22:51:25",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450253"
+    },
+    {
+        "timestamp": "2026-06-14 22:51:29",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 241011450257"
+    },
+    {
+        "timestamp": "2026-06-15 00:19:14",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Menghapus seluruh data mahasiswa"
+    },
+    {
+        "timestamp": "2026-06-15 00:32:34",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Menghapus seluruh data mahasiswa"
+    },
+    {
+        "timestamp": "2026-06-15 00:41:44",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-15 00:41:51",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-15 00:44:10",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 2300000"
+    },
+    {
+        "timestamp": "2026-06-15 00:47:34",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim profil mahasiswa 2300000"
+    },
+    {
+        "timestamp": "2026-06-15 00:49:02",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-15 00:53:21",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-15 00:54:21",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
     }
 ]

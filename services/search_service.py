@@ -3,15 +3,21 @@ class LinearSearch:
     complexity = "O(n)"
 
     @staticmethod
-    def search(students, keyword):
+    def search(students, keyword, field="full_name"):
 
-        keyword = keyword.lower()
+        keyword = str(keyword).lower()
 
-        return [
-            student
-            for student in students
-            if (keyword in student.full_name.lower() or keyword in student.nim.lower())
-        ]
+        results = []
+
+        for student in students:
+
+            value = str(getattr(student, field, "")).lower()
+
+            if keyword in value:
+
+                results.append(student)
+
+        return results
 
 
 class SequentialSearch:
@@ -19,15 +25,16 @@ class SequentialSearch:
     complexity = "O(n)"
 
     @staticmethod
-    def search(students, keyword):
-
-        keyword = keyword.lower()
+    def search(students, keyword, field="full_name"):
+        keyword = str(keyword).lower()
 
         results = []
 
         for student in students:
 
-            if keyword in student.major.lower():
+            value = str(getattr(student, field, "")).lower()
+
+            if keyword in value:
 
                 results.append(student)
 
@@ -39,9 +46,11 @@ class BinarySearch:
     complexity = "O(log n)"
 
     @staticmethod
-    def search(students, nim):
+    def search(students, keyword, field="nim"):
 
-        students = sorted(students, key=lambda s: s.nim)
+        keyword = str(keyword)
+
+        students = sorted(students, key=lambda s: str(getattr(s, field)))
 
         left = 0
         right = len(students) - 1
@@ -50,11 +59,13 @@ class BinarySearch:
 
             middle = (left + right) // 2
 
-            if students[middle].nim == nim:
+            current = str(getattr(students[middle], field))
+
+            if current == keyword:
 
                 return [students[middle]]
 
-            if students[middle].nim < nim:
+            elif current < keyword:
 
                 left = middle + 1
 
