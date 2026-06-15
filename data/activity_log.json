@@ -256,5 +256,71 @@
         "username": "admin",
         "action": "LOGOUT",
         "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-15 07:53:17",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-15 07:54:38",
+        "username": "admin",
+        "action": "ADD",
+        "description": "Tambah mahasiswa 241011450222"
+    },
+    {
+        "timestamp": "2026-06-15 07:55:55",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Menghapus seluruh data mahasiswa"
+    },
+    {
+        "timestamp": "2026-06-15 08:08:54",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-15 08:11:47",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-15 08:12:02",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim profil mahasiswa 2300000"
+    },
+    {
+        "timestamp": "2026-06-15 08:12:52",
+        "username": "admin",
+        "action": "ADD",
+        "description": "Tambah mahasiswa 241011450250"
+    },
+    {
+        "timestamp": "2026-06-15 08:14:53",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim profil mahasiswa 241011450250"
+    },
+    {
+        "timestamp": "2026-06-15 08:15:17",
+        "username": "admin",
+        "action": "EMAIL",
+        "description": "Kirim profil mahasiswa 2300003"
+    },
+    {
+        "timestamp": "2026-06-15 08:41:25",
+        "username": "admin",
+        "action": "LOGOUT",
+        "description": "Logout sistem"
+    },
+    {
+        "timestamp": "2026-06-15 08:41:33",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
     }
 ]

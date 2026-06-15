@@ -8998,5 +8998,23 @@
         "gpa": 3.39,
         "email": "aulia.wijaya@gmail.com",
         "phone": "087615859284"
+    },
+    {
+        "nim": "241011450222",
+        "full_name": "aditya",
+        "major": "teknik informatika",
+        "year": 2025,
+        "gpa": 4.0,
+        "email": "adityaguanteng@gmail.com",
+        "phone": "08123456789"
+    },
+    {
+        "nim": "241011450250",
+        "full_name": "farah nasywa",
+        "major": "teknik informatika",
+        "year": 2025,
+        "gpa": 4.0,
+        "email": "farahnasywa06@gmail.com",
+        "phone": "08123456789"
     }
 ]
