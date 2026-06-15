@@ -322,5 +322,11 @@
         "username": "admin",
         "action": "LOGIN",
         "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-15 09:28:12",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 2300000"
     }
 ]
