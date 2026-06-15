@@ -72,9 +72,10 @@ def login_page():
 
         if login(username, password):
             session["username"] = username
-
-            write_log(username, "LOGIN", "Berhasil login")
-
+            try:
+                write_log(username, "LOGIN", "Berhasil login")
+            except Exception as e:
+                print(e)
             return redirect(url_for("dashboard"))
 
         flash("Username atau Password salah")

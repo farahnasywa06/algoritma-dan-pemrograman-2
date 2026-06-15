@@ -9,40 +9,100 @@ LOG_FILE = BASE_DIR / "data" / "activity_log.json"
 
 def ensure_log_file():
 
-    if not LOG_FILE.exists():
+    try:
 
-        LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        if not LOG_FILE.exists():
 
-        with open(LOG_FILE, "w", encoding="utf-8") as file:
+            LOG_FILE.parent.mkdir(
+                parents=True,
+                exist_ok=True
+            )
 
-            json.dump([], file, indent=4)
+            with open(
+                LOG_FILE,
+                "w",
+                encoding="utf-8"
+            ) as file:
+
+                json.dump(
+                    [],
+                    file,
+                    indent=4
+                )
+
+    except Exception as error:
+
+        print(
+            f"[LOG INIT ERROR] {error}"
+        )
 
 
-def write_log(username: str, action: str, description: str):
-    ensure_log_file()
+def write_log(
+    username: str,
+    action: str,
+    description: str
+):
 
-    with open(LOG_FILE, "r", encoding="utf-8") as file:
+    try:
 
-        logs = json.load(file)
+        ensure_log_file()
 
-    logs.append(
-        {
-            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "username": username,
-            "action": action,
-            "description": description,
-        }
-    )
+        with open(
+            LOG_FILE,
+            "r",
+            encoding="utf-8"
+        ) as file:
 
-    with open(LOG_FILE, "w", encoding="utf-8") as file:
+            logs = json.load(file)
 
-        json.dump(logs, file, indent=4)
+        logs.append(
+            {
+                "timestamp": datetime.now().strftime(
+                    "%Y-%m-%d %H:%M:%S"
+                ),
+                "username": username,
+                "action": action,
+                "description": description,
+            }
+        )
+
+        with open(
+            LOG_FILE,
+            "w",
+            encoding="utf-8"
+        ) as file:
+
+            json.dump(
+                logs,
+                file,
+                indent=4
+            )
+
+    except Exception as error:
+
+        print(
+            f"[WRITE LOG ERROR] {error}"
+        )
 
 
 def get_logs():
 
-    ensure_log_file()
+    try:
 
-    with open(LOG_FILE, "r", encoding="utf-8") as file:
+        ensure_log_file()
 
-        return json.load(file)
+        with open(
+            LOG_FILE,
+            "r",
+            encoding="utf-8"
+        ) as file:
+
+            return json.load(file)
+
+    except Exception as error:
+
+        print(
+            f"[READ LOG ERROR] {error}"
+        )
+
+        return []
