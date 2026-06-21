@@ -1,4 +1,6 @@
 __pycache__/
 *.pyc
 .env
+models/__pycache__
+services/__pycache__
 venv/
