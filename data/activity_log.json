@@ -328,5 +328,62 @@
         "username": "admin",
         "action": "DELETE",
         "description": "Hapus mahasiswa 2300000"
+<<<<<<< HEAD
+=======
+    },
+    {
+        "timestamp": "2026-06-21 21:22:29",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-21 21:47:07",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-21 21:47:07",
+        "username": "admin",
+        "action": "ADD",
+        "description": "Tambah mahasiswa 123456789012"
+    },
+    {
+        "timestamp": "2026-06-21 21:47:07",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 2300001"
+    },
+    {
+        "timestamp": "2026-06-21 21:48:26",
+        "username": "admin",
+        "action": "LOGIN",
+        "description": "Berhasil login"
+    },
+    {
+        "timestamp": "2026-06-21 21:55:01",
+        "username": "admin",
+        "action": "ADD",
+        "description": "Tambah mahasiswa 999999999999"
+    },
+    {
+        "timestamp": "2026-06-21 21:55:01",
+        "username": "admin",
+        "action": "UPDATE",
+        "description": "Update mahasiswa 999999999999"
+    },
+    {
+        "timestamp": "2026-06-21 21:55:01",
+        "username": "admin",
+        "action": "DELETE",
+        "description": "Hapus mahasiswa 999999999999"
+    },
+    {
+        "timestamp": "2026-06-21 22:08:23",
+        "username": "admin",
+        "action": "ADD",
+        "description": "Tambah mahasiswa 241011450253"
+>>>>>>> bbf3ee3 (update filesystem)
     }
 ]

@@ -1,4 +1,4 @@
-
+__pycache__/
+*.pyc
 .env
-git-push.txt
-.gitignore
+venv/

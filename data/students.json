@@ -9007,5 +9007,17 @@
         "gpa": 4.0,
         "email": "farahnasywa06@gmail.com",
         "phone": "08123456789"
+<<<<<<< HEAD
+=======
+    },
+    {
+        "nim": "241011450253",
+        "full_name": "farah",
+        "major": "teknik informatika",
+        "year": 2024,
+        "gpa": 4.0,
+        "email": "farahnasywa06@gmail.com",
+        "phone": "08123456789"
+>>>>>>> bbf3ee3 (update filesystem)
     }
 ]

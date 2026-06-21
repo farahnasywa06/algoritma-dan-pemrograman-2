@@ -11,9 +11,15 @@ from flask import (
     url_for,
     session,
     flash,
+<<<<<<< HEAD
     send_file,
 )
 
+=======
+    Response,
+)
+from io import StringIO
+>>>>>>> bbf3ee3 (update filesystem)
 from services.auth_service import login
 from services.activity_service import write_log
 from services.import_export_service import (
@@ -31,6 +37,11 @@ app = Flask(__name__)
 
 app.secret_key = "semester3-secret-key"
 
+<<<<<<< HEAD
+=======
+IS_VERCEL = os.getenv("VERCEL") == "1"
+
+>>>>>>> bbf3ee3 (update filesystem)
 # =========================
 
 # LOGIN REQUIRED
@@ -109,6 +120,11 @@ def logout():
 
 @app.route("/dashboard")
 def dashboard():
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     students = load_students()
 
@@ -277,6 +293,7 @@ def export_csv():
 
     students = load_students()
 
+<<<<<<< HEAD
     csv_file = "data/export_students.csv"
 
     with open(csv_file, "w", newline="", encoding="utf-8") as file:
@@ -300,6 +317,43 @@ def export_csv():
             )
 
     return send_file(csv_file, as_attachment=True)
+=======
+    output = StringIO()
+
+    writer = csv.writer(output)
+
+    writer.writerow(
+        [
+            "nim",
+            "full_name",
+            "major",
+            "year",
+            "gpa",
+            "email",
+            "phone",
+        ]
+    )
+
+    for student in students:
+
+        writer.writerow(
+            [
+                student.nim,
+                student.full_name,
+                student.major,
+                student.year,
+                student.gpa,
+                student.email,
+                student.phone,
+            ]
+        )
+
+    return Response(
+        output.getvalue(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=students.csv"},
+    )
+>>>>>>> bbf3ee3 (update filesystem)
 
 
 @app.route("/export/json")
@@ -307,6 +361,7 @@ def export_json():
 
     students = load_students()
 
+<<<<<<< HEAD
     export_file = "data/export_students.json"
 
     with open(export_file, "w", encoding="utf-8") as file:
@@ -314,10 +369,28 @@ def export_json():
         json.dump([student.to_dict() for student in students], file, indent=4)
 
     return send_file(export_file, as_attachment=True)
+=======
+    data = json.dumps(
+        [student.to_dict() for student in students], indent=4, ensure_ascii=False
+    )
+
+    return Response(
+        data,
+        mimetype="application/json",
+        headers={"Content-Disposition": "attachment; filename=students.json"},
+    )
+>>>>>>> bbf3ee3 (update filesystem)
 
 
 @app.route("/import/csv", methods=["POST"])
 def upload_csv():
+<<<<<<< HEAD
+=======
+
+    if not login_required():
+        return redirect(url_for("login_page"))
+
+>>>>>>> bbf3ee3 (update filesystem)
     file = request.files["file"]
 
     if file.filename == "":
@@ -326,7 +399,11 @@ def upload_csv():
 
         return redirect(url_for("students_page"))
 
+<<<<<<< HEAD
     upload_path = "data/temp_import.csv"
+=======
+    upload_path = "/tmp/temp_import.csv" if IS_VERCEL else "data/temp_import.csv"
+>>>>>>> bbf3ee3 (update filesystem)
 
     file.save(upload_path)
 
@@ -340,6 +417,12 @@ def upload_csv():
 @app.route("/import/json", methods=["POST"])
 def upload_json():
 
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+
+>>>>>>> bbf3ee3 (update filesystem)
     file = request.files["file"]
 
     if file.filename == "":
@@ -348,7 +431,11 @@ def upload_json():
 
         return redirect(url_for("students_page"))
 
+<<<<<<< HEAD
     upload_path = "data/temp_import.json"
+=======
+    upload_path = "/tmp/temp_import.json" if IS_VERCEL else "data/temp_import.json"
+>>>>>>> bbf3ee3 (update filesystem)
 
     file.save(upload_path)
 
@@ -358,7 +445,10 @@ def upload_json():
 
     return redirect(url_for("students_page"))
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bbf3ee3 (update filesystem)
 # =========================
 
 # ADD STUDENT
@@ -368,6 +458,11 @@ def upload_json():
 
 @app.route("/students/add", methods=["POST"])
 def add_student():
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     nim = request.form["nim"].strip()
     full_name = request.form["full_name"].strip()
@@ -430,7 +525,13 @@ def add_student():
 
         students.append(new_student)
 
+<<<<<<< HEAD
         save_students(students)
+=======
+        if not save_students(students):
+            flash("Data gagal disimpan")
+            return redirect(url_for("students_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
         write_log(session["username"], "ADD", f"Tambah mahasiswa {nim}")
 
@@ -445,6 +546,11 @@ def add_student():
 
 @app.route("/students/update/<nim>", methods=["POST"])
 def update_student(nim):
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     full_name = request.form["full_name"].strip()
     major = request.form["major"].strip()
@@ -488,7 +594,13 @@ def update_student(nim):
 
                 break
 
+<<<<<<< HEAD
         save_students(students)
+=======
+        if not save_students(students):
+            flash("Data gagal disimpan")
+            return redirect(url_for("students_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
         write_log(session["username"], "UPDATE", f"Update mahasiswa {nim}")
 
@@ -510,12 +622,23 @@ def update_student(nim):
 
 @app.route("/students/delete/<nim>")
 def delete_student(nim):
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     students = load_students()
 
     students = [student for student in students if student.nim != nim]
 
+<<<<<<< HEAD
     save_students(students)
+=======
+    if not save_students(students):
+        flash("Data gagal disimpan")
+        return redirect(url_for("students_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     write_log(session["username"], "DELETE", f"Hapus mahasiswa {nim}")
 
@@ -531,7 +654,13 @@ def delete_all_students():
 
         return redirect(url_for("login_page"))
 
+<<<<<<< HEAD
     save_students([])
+=======
+    if not save_students([]):
+        flash("Data gagal disimpan")
+        return redirect(url_for("students_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     write_log(
         session["username"],
@@ -553,6 +682,11 @@ def delete_all_students():
 
 @app.route("/send-email/<nim>")
 def send_email_student(nim):
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     students = load_students()
 
@@ -590,6 +724,11 @@ def send_email_student(nim):
 
 @app.route("/settings")
 def settings():
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     students = load_students()
 
@@ -616,6 +755,11 @@ def settings():
 # =========================
 @app.route("/activity-log")
 def activity_log_page():
+<<<<<<< HEAD
+=======
+    if not login_required():
+        return redirect(url_for("login_page"))
+>>>>>>> bbf3ee3 (update filesystem)
 
     try:
 
